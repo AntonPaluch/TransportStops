@@ -14,7 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let firstVC = ModuleAssembler.createMainModule()
-        window?.rootViewController = firstVC
+        let navigationController = UINavigationController(rootViewController: firstVC)
+        window?.rootViewController = navigationController
+        let navigationBar = navigationController.navigationBar
+        navigationController.navigationBar.topItem?.title = "Остановки транспорта"
+        UINavigationBar.appearance().backgroundColor = #colorLiteral(red: 0.9709939361, green: 0.9568827748, blue: 0.9220435023, alpha: 1)
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)]
+        navigationBar.standardAppearance = navigationBarAppearance
+        navigationBar.scrollEdgeAppearance = navigationBarAppearance
         window?.makeKeyAndVisible()
     }
 

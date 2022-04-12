@@ -1,17 +1,41 @@
 import UIKit
+import SnapKit
 
 protocol FloatingViewProtocol: AnyObject {
-    func setUIElements(oneBusStop: Stop)
+    func setupUI(oneBusStop: Stop)
 }
 
 class FloatingPanelVC: UIViewController {
     
     var presenter: FloatingPresenterProtocol!
     
-    private let nameLabel = UILabel()
-    private let typeLabel = UILabel()
-    private let numberLabel = UILabel()
-    private let timeArrivalLabel = UILabel()
+    private let nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.textColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
+        nameLabel.font = .app(type: .bold, size: .normal)
+        return nameLabel
+    }()
+    
+    private let typeLabel: UILabel = {
+        let typeLabel = UILabel()
+        typeLabel.textColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
+        typeLabel.font = .app(type: .bold, size: .normal)
+        return typeLabel
+    }()
+    
+    private let numberLabel: UILabel = {
+        let numberLabel = UILabel()
+        numberLabel.textColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
+        numberLabel.font = .app(type: .bold, size: .normal)
+        return numberLabel
+    }()
+
+    private let timeArrivalLabel: UILabel = {
+        let timeArrivalLabel = UILabel()
+        timeArrivalLabel.textColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
+        timeArrivalLabel.font = .app(type: .bold, size: .normal)
+        return timeArrivalLabel
+    }()
     
     private lazy var stackView = UIStackView(
         arrangedSubviews: [
@@ -31,35 +55,32 @@ class FloatingPanelVC: UIViewController {
     private func setupStackView() {
         view.addSubview(stackView)
         stackView.axis = .vertical
-        stackView.spacing = 16
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 4),
-            stackView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 2),
-            view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor, multiplier: 2)
-        ])
+        stackView.spacing = 20
+        // Constraints
+        stackView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().offset(40)
+        }
     }
-    
 }
 
-// MARK: - BottomView Protocol
+// MARK: - FloatView Protocol
 
 extension FloatingPanelVC: FloatingViewProtocol {
     
-    func setUIElements(oneBusStop: Stop) {
-        nameLabel.text = "🚏 Станция:" + " " + oneBusStop.name
+    func setupUI(oneBusStop: Stop) {
+        nameLabel.text = Strings.station.rawValue + " " + oneBusStop.name
         nameLabel.numberOfLines = 0
         
-        let typeString = (oneBusStop.routePath.first?.type ?? "неизвестен 😞")
+        let typeString = (oneBusStop.routePath.first?.type ?? Strings.unknownState.rawValue)
         switch typeString {
-        case "bus": typeLabel.text = "Тип маршрута: Автобус 🚌"
-        case "tram": typeLabel.text = "Тип маршрута: Трамвай 🚋"
-        case "train": typeLabel.text = "Тип маршрута: Поезд 🚉"
-        default: typeLabel.text = "Тип маршрута: Неизвестен 😞"
+        case "bus": typeLabel.text = Strings.busType.rawValue
+        case "tram": typeLabel.text = Strings.tramType.rawValue
+        case "train": typeLabel.text = Strings.trainType.rawValue
+        default: typeLabel.text = Strings.unknownType.rawValue
         }
         
-        numberLabel.text = "🆔 Номер маршрута:" + " " + (oneBusStop.routePath.first?.number ?? "Неизвестен 😔")
-        timeArrivalLabel.text = "🕓 Время до прибытия:" + " " + (oneBusStop.routePath.first?.timeArrival.first ?? "Неизвестно 😩")
+        numberLabel.text = Strings.numberRoute.rawValue + " " + (oneBusStop.routePath.first?.number ?? Strings.unknownNumber.rawValue)
+        timeArrivalLabel.text = Strings.timeArrivalText.rawValue + " " + (oneBusStop.routePath.first?.timeArrival.first ?? Strings.unknownTime.rawValue)
     }
 }

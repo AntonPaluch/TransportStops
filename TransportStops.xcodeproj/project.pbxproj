@@ -22,6 +22,8 @@
 		7E1708262805A79300BBB998 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708252805A79300BBB998 /* DetailVC.swift */; };
 		7E1708292805A7CC00BBB998 /* FloatingPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708282805A7CC00BBB998 /* FloatingPanelPresenter.swift */; };
 		7E17082B2805A7DC00BBB998 /* FloatingPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */; };
+		7E17082E2806038A00BBB998 /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17082D2806038A00BBB998 /* UIFont+Size.swift */; };
+		7E170830280604ED00BBB998 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17082F280604ED00BBB998 /* Constants.swift */; };
 		7E4A6005CF8C096754912AA1 /* libPods-TransportStops.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 805E477E2C818EA8EF280F23 /* libPods-TransportStops.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		7E1708252805A79300BBB998 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		7E1708282805A7CC00BBB998 /* FloatingPanelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelPresenter.swift; sourceTree = "<group>"; };
 		7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelVC.swift; sourceTree = "<group>"; };
+		7E17082D2806038A00BBB998 /* UIFont+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Size.swift"; sourceTree = "<group>"; };
+		7E17082F280604ED00BBB998 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		805E477E2C818EA8EF280F23 /* libPods-TransportStops.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransportStops.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA8658F965FC5011BB65647 /* Pods-TransportStops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportStops.release.xcconfig"; path = "Target Support Files/Pods-TransportStops/Pods-TransportStops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,7 @@
 				7E09585627D2A7760049D7B7 /* AppDelegate.swift */,
 				7E09585827D2A7760049D7B7 /* SceneDelegate.swift */,
 				7E1708202805990800BBB998 /* Assembler.swift */,
+				7E17082C2806037100BBB998 /* Extensions */,
 				7E170817280595CC00BBB998 /* Model */,
 				7E1708192805963A00BBB998 /* MainModule */,
 				7E1708222805A61D00BBB998 /* DetailModule */,
@@ -156,6 +161,15 @@
 				7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */,
 			);
 			path = FloatingPanel;
+			sourceTree = "<group>";
+		};
+		7E17082C2806037100BBB998 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E17082D2806038A00BBB998 /* UIFont+Size.swift */,
+				7E17082F280604ED00BBB998 /* Constants.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E1708292805A7CC00BBB998 /* FloatingPanelPresenter.swift in Sources */,
+				7E17082E2806038A00BBB998 /* UIFont+Size.swift in Sources */,
 				7E17082B2805A7DC00BBB998 /* FloatingPanelVC.swift in Sources */,
 				7E17081B2805966700BBB998 /* MainPresenter.swift in Sources */,
 				7E17081D2805973800BBB998 /* MainVC.swift in Sources */,
@@ -265,6 +280,7 @@
 				7E1708262805A79300BBB998 /* DetailVC.swift in Sources */,
 				7E09585727D2A7760049D7B7 /* AppDelegate.swift in Sources */,
 				7E17081F2805988100BBB998 /* AlertManager.swift in Sources */,
+				7E170830280604ED00BBB998 /* Constants.swift in Sources */,
 				7E1708212805990800BBB998 /* Assembler.swift in Sources */,
 				7E09585927D2A7760049D7B7 /* SceneDelegate.swift in Sources */,
 			);

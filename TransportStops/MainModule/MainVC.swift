@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 protocol MainViewProtocol: AnyObject {
     func setAllBusStops()
@@ -11,11 +12,11 @@ final class MainVC: UIViewController {
     
     var presenter: MainPresenterProtocol!
     
-    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = #colorLiteral(red: 0.9709939361, green: 0.9568827748, blue: 0.9220435023, alpha: 1)
         setupTableView()
         presenter.getAllBusStops()
     }
@@ -25,14 +26,10 @@ final class MainVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        // Constraints
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -49,6 +46,7 @@ extension MainVC: UITableViewDataSource {
         let busStop = presenter.busStops[indexPath.row]
         cell.textLabel?.text = busStop.name
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.textColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
         return cell
     }
 }
@@ -66,7 +64,7 @@ extension MainVC: UITableViewDelegate {
     }
 }
 
-// MARK: - FirstView Protocol
+// MARK: - MainView Protocol
 
 extension MainVC: MainViewProtocol {
     

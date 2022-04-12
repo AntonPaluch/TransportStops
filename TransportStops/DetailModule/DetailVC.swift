@@ -2,6 +2,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import FloatingPanel
+import SnapKit
 
 protocol DetailViewProtocol: AnyObject {
     func setOneBusStopOnMap(oneBusStop: Stop)
@@ -25,26 +26,23 @@ final class DetailVC: UIViewController, FloatingPanelControllerDelegate {
     
     private func setupMapView() {
         view.addSubview(mapView)
-        
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.topAnchor),
-            mapView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            mapView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        // Constraints
+        mapView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     private func setupCloseButton() {
         mapView.addSubview(closeButton)
-        closeButton.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
-        closeButton.tintColor = .black
+        closeButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        closeButton.tintColor = #colorLiteral(red: 0.2823102176, green: 0.1690107286, blue: 0.146335572, alpha: 1)
         
         closeButton.addTarget(self, action: #selector(closeMap), for: .touchUpInside)
-        
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.topAnchor.constraint(equalToSystemSpacingBelow: mapView.topAnchor, multiplier: 8).isActive = true
-        closeButton.leftAnchor.constraint(equalToSystemSpacingAfter: mapView.leftAnchor, multiplier: 4).isActive = true
+        // Constraints
+        closeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(50)
+            $0.right.equalToSuperview().inset(20)
+        }
     }
     
     @objc private func closeMap() {
@@ -57,14 +55,16 @@ final class DetailVC: UIViewController, FloatingPanelControllerDelegate {
 extension DetailVC: DetailViewProtocol {
     
     func setOneBusStopOnMap(oneBusStop: Stop) {
-        setupPlacemark(lat: oneBusStop.lat,
-                       lon: oneBusStop.lon,
-                       name: oneBusStop.name)
+        setupPlacemark(
+            lat: oneBusStop.lat,
+            lon: oneBusStop.lon,
+            name: oneBusStop.name
+        )
     }
     
     func setBottomView(with oneBusStop: Stop) {
         let bottomVC = ModuleAssembler.createFloatingModule(oneBusStop: oneBusStop)
-        setupBottomViewViaFloatingPanel(with: bottomVC)
+        setupViewViaFloatingPanel(with: bottomVC)
     }
     
     func showAlert(with error: Error) {
@@ -81,26 +81,21 @@ extension DetailVC {
         var annotationsArray: [MKPointAnnotation] = []
         
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(CLLocation(latitude: lat,
-                                                   longitude: lon)) { [weak self] placemarks, error in
-            if let error = error {
+        geocoder.reverseGeocodeLocation(
+            CLLocation( latitude: lat, longitude: lon)) { [weak self] placemarks, error in
+                if let error = error {
                 print(error)
-            }
+                }
+        guard let placemarks = placemarks else { return }
+        let placemark = placemarks.first
             
-            guard let placemarks = placemarks else { return }
-            let placemark = placemarks.first
-            
-            let annotation = MKPointAnnotation()
-            annotation.title = name
-            annotation.coordinate = CLLocationCoordinate2D(latitude: lat,
-                                                           longitude: lon)
-            
-            guard let placemarkLocation = placemark?.location else { return }
-            annotation.coordinate = placemarkLocation.coordinate
-            
-            annotationsArray.append(annotation)
-            
-            self?.mapView.showAnnotations(annotationsArray, animated: false)
+        let annotation = MKPointAnnotation()
+        annotation.title = name
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        guard let placemarkLocation = placemark?.location else { return }
+        annotation.coordinate = placemarkLocation.coordinate
+        annotationsArray.append(annotation)
+        self?.mapView.showAnnotations(annotationsArray, animated: false)
         }
     }
 }
@@ -109,13 +104,12 @@ extension DetailVC {
 
 extension DetailVC {
     
-    private func setupBottomViewViaFloatingPanel(with contentViewController: UIViewController) {
+    private func setupViewViaFloatingPanel(with contentViewController: UIViewController) {
         let floatingPanel = FloatingPanelController()
         floatingPanel.delegate = self
         floatingPanel.addPanel(toParent: self)
         floatingPanel.surfaceView.layer.cornerRadius = 20
         floatingPanel.surfaceView.clipsToBounds = true
-    
         floatingPanel.set(contentViewController: contentViewController)
     }
 }

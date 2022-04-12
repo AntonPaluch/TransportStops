@@ -18,7 +18,7 @@ class FloatingPresenter: FloatingPresenterProtocol {
     }
     
     func setUIElements() {
-        view.setUIElements(oneBusStop: oneBusStop)
+        view.setupUI(oneBusStop: oneBusStop)
     }
 
 }
