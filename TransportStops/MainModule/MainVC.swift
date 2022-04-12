@@ -5,7 +5,9 @@ protocol MainViewProtocol: AnyObject {
     func showAlert(with error: Error)
 }
 
-class FirstViewController: UIViewController {
+final class MainVC: UIViewController {
+    
+    // MARK: - Private Properties
     
     var presenter: MainPresenterProtocol!
     
@@ -36,7 +38,7 @@ class FirstViewController: UIViewController {
 
 // MARK: - TableView data source
 
-extension FirstViewController: UITableViewDataSource {
+extension MainVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.busStops.count
@@ -53,20 +55,20 @@ extension FirstViewController: UITableViewDataSource {
 
 // MARK: - TableView delegate
 
-extension FirstViewController: UITableViewDelegate {
+extension MainVC: UITableViewDelegate {
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let busStop = presenter.busStops1[indexPath.row]
-//        let secondVC = ModuleAssembler.createSecondModule(busStop1: busStop1)
-//        secondVC.modalPresentationStyle = .fullScreen
-//        present(secondVC, animated: true, completion: nil)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let busStop = presenter.busStops[indexPath.row]
+        let secondVC = ModuleAssembler.createDetailModule(busStop: busStop)
+        secondVC.modalPresentationStyle = .fullScreen
+        present(secondVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - FirstView Protocol
 
-extension FirstViewController: MainViewProtocol {
+extension MainVC: MainViewProtocol {
     
     func setAllBusStops() {
         tableView.reloadData()

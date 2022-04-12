@@ -1,20 +1,20 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func getAllBusStops(completion: @escaping (Result<Data, Error>) -> Void)
-    func getOneBusStop(idOfBusStop: String, completion: @escaping (Result<Stop, Error>) -> Void)
+    func getBusStops(completion: @escaping (Result<Data, Error>) -> Void)
+    func getDetailBusStop(idOfBusStop: String, completion: @escaping (Result<Stop, Error>) -> Void)
 }
 
 class NetworkManager: NetworkServiceProtocol {
     
-    private func getJSONData<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
+    private func getJSONData<T: Decodable>(
+        urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            
             guard let data = data else { return }
             
             do {
@@ -27,13 +27,13 @@ class NetworkManager: NetworkServiceProtocol {
         task.resume()
     }
     
-    func getAllBusStops(completion: @escaping (Result<Data, Error>) -> Void) {
-        let urlString = "https://api.mosgorpass.ru/v8.2/stop"
+    func getBusStops(completion: @escaping (Result<Data, Error>) -> Void) {
+        let urlString = URLConstant.urlAPI
         getJSONData(urlString: urlString, completion: completion)
     }
     
-    func getOneBusStop(idOfBusStop: String, completion: @escaping (Result<Stop, Error>) -> Void) {
-        let urlString = "https://api.mosgorpass.ru/v8.2/stop/\(idOfBusStop)"
+    func getDetailBusStop(idOfBusStop: String, completion: @escaping (Result<Stop, Error>) -> Void) {
+        let urlString = "\(URLConstant.urlAPI)/\(idOfBusStop)"
         getJSONData(urlString: urlString, completion: completion)
     }
     

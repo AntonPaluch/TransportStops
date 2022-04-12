@@ -17,10 +17,16 @@
 		7E17081B2805966700BBB998 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17081A2805966700BBB998 /* MainPresenter.swift */; };
 		7E17081D2805973800BBB998 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17081C2805973800BBB998 /* MainVC.swift */; };
 		7E17081F2805988100BBB998 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17081E2805988100BBB998 /* AlertManager.swift */; };
-		7E1708212805990800BBB998 /* MainAssemler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708202805990800BBB998 /* MainAssemler.swift */; };
+		7E1708212805990800BBB998 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708202805990800BBB998 /* Assembler.swift */; };
+		7E1708242805A78700BBB998 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708232805A78700BBB998 /* DetailPresenter.swift */; };
+		7E1708262805A79300BBB998 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708252805A79300BBB998 /* DetailVC.swift */; };
+		7E1708292805A7CC00BBB998 /* FloatingPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1708282805A7CC00BBB998 /* FloatingPanelPresenter.swift */; };
+		7E17082B2805A7DC00BBB998 /* FloatingPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */; };
+		7E4A6005CF8C096754912AA1 /* libPods-TransportStops.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 805E477E2C818EA8EF280F23 /* libPods-TransportStops.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6802727952B28E3BFF2B76D9 /* Pods-TransportStops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportStops.debug.xcconfig"; path = "Target Support Files/Pods-TransportStops/Pods-TransportStops.debug.xcconfig"; sourceTree = "<group>"; };
 		7E09585327D2A7760049D7B7 /* TransportStops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransportStops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E09585627D2A7760049D7B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E09585827D2A7760049D7B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +39,13 @@
 		7E17081A2805966700BBB998 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		7E17081C2805973800BBB998 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E17081E2805988100BBB998 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		7E1708202805990800BBB998 /* MainAssemler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemler.swift; sourceTree = "<group>"; };
+		7E1708202805990800BBB998 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		7E1708232805A78700BBB998 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		7E1708252805A79300BBB998 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		7E1708282805A7CC00BBB998 /* FloatingPanelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelPresenter.swift; sourceTree = "<group>"; };
+		7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelVC.swift; sourceTree = "<group>"; };
+		805E477E2C818EA8EF280F23 /* libPods-TransportStops.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransportStops.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECA8658F965FC5011BB65647 /* Pods-TransportStops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportStops.release.xcconfig"; path = "Target Support Files/Pods-TransportStops/Pods-TransportStops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E4A6005CF8C096754912AA1 /* libPods-TransportStops.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A9C9A313595822DFA098540 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				805E477E2C818EA8EF280F23 /* libPods-TransportStops.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77231B3E2B66AF6FBC275E4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6802727952B28E3BFF2B76D9 /* Pods-TransportStops.debug.xcconfig */,
+				ECA8658F965FC5011BB65647 /* Pods-TransportStops.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7E09584A27D2A7760049D7B7 = {
 			isa = PBXGroup;
 			children = (
 				7E09585527D2A7760049D7B7 /* TransportStops */,
 				7E09585427D2A7760049D7B7 /* Products */,
+				77231B3E2B66AF6FBC275E4D /* Pods */,
+				5A9C9A313595822DFA098540 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,8 +100,10 @@
 			children = (
 				7E09585627D2A7760049D7B7 /* AppDelegate.swift */,
 				7E09585827D2A7760049D7B7 /* SceneDelegate.swift */,
+				7E1708202805990800BBB998 /* Assembler.swift */,
 				7E170817280595CC00BBB998 /* Model */,
 				7E1708192805963A00BBB998 /* MainModule */,
+				7E1708222805A61D00BBB998 /* DetailModule */,
 				7E1708182805962C00BBB998 /* Services */,
 				7E09585C27D2A7760049D7B7 /* Main.storyboard */,
 				7E09585F27D2A7770049D7B7 /* Assets.xcassets */,
@@ -91,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				7E09586C27D2ACBE0049D7B7 /* NetworkManager.swift */,
+				7E17081E2805988100BBB998 /* AlertManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -98,12 +133,29 @@
 		7E1708192805963A00BBB998 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				7E1708202805990800BBB998 /* MainAssemler.swift */,
 				7E17081A2805966700BBB998 /* MainPresenter.swift */,
 				7E17081C2805973800BBB998 /* MainVC.swift */,
-				7E17081E2805988100BBB998 /* AlertManager.swift */,
 			);
 			path = MainModule;
+			sourceTree = "<group>";
+		};
+		7E1708222805A61D00BBB998 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				7E1708232805A78700BBB998 /* DetailPresenter.swift */,
+				7E1708252805A79300BBB998 /* DetailVC.swift */,
+				7E1708272805A79900BBB998 /* FloatingPanel */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		7E1708272805A79900BBB998 /* FloatingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				7E1708282805A7CC00BBB998 /* FloatingPanelPresenter.swift */,
+				7E17082A2805A7DC00BBB998 /* FloatingPanelVC.swift */,
+			);
+			path = FloatingPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +165,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E09586727D2A7770049D7B7 /* Build configuration list for PBXNativeTarget "TransportStops" */;
 			buildPhases = (
+				662B36FEC620D9BB66ABEE45 /* [CP] Check Pods Manifest.lock */,
 				7E09584F27D2A7760049D7B7 /* Sources */,
 				7E09585027D2A7760049D7B7 /* Frameworks */,
 				7E09585127D2A7760049D7B7 /* Resources */,
@@ -172,18 +225,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		662B36FEC620D9BB66ABEE45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TransportStops-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7E09584F27D2A7760049D7B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E1708292805A7CC00BBB998 /* FloatingPanelPresenter.swift in Sources */,
+				7E17082B2805A7DC00BBB998 /* FloatingPanelVC.swift in Sources */,
 				7E17081B2805966700BBB998 /* MainPresenter.swift in Sources */,
 				7E17081D2805973800BBB998 /* MainVC.swift in Sources */,
+				7E1708242805A78700BBB998 /* DetailPresenter.swift in Sources */,
 				7E09586B27D2A7E30049D7B7 /* StopsModel.swift in Sources */,
 				7E09586D27D2ACBE0049D7B7 /* NetworkManager.swift in Sources */,
+				7E1708262805A79300BBB998 /* DetailVC.swift in Sources */,
 				7E09585727D2A7760049D7B7 /* AppDelegate.swift in Sources */,
 				7E17081F2805988100BBB998 /* AlertManager.swift in Sources */,
-				7E1708212805990800BBB998 /* MainAssemler.swift in Sources */,
+				7E1708212805990800BBB998 /* Assembler.swift in Sources */,
 				7E09585927D2A7760049D7B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +410,7 @@
 		};
 		7E09586827D2A7770049D7B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6802727952B28E3BFF2B76D9 /* Pods-TransportStops.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -356,6 +439,7 @@
 		};
 		7E09586927D2A7770049D7B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECA8658F965FC5011BB65647 /* Pods-TransportStops.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
