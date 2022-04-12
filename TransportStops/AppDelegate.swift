@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  TransportStops
-//
-//  Created by Pandos on 04.03.2022.
-//
-
 import UIKit
 
 @main
